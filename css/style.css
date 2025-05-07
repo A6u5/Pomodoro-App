@@ -1,0 +1,665 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #1e2140;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    font-weight: bolder;
+    justify-content: space-evenly;
+    font-family: "Kumbh Sans";
+}
+
+body > * {
+    cursor: default;
+    user-select: none;
+}
+
+h1 {
+    color: #d5defd;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.options {
+    display: flex;
+    background-color: #151932;
+    padding: .5rem .5rem .5rem .5rem;
+    border-radius: 500px;
+    font-size: 1rem;
+    color: #60647d;
+    gap: .2rem;
+}
+
+.options > div {
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 500px;
+}
+.pomodoro {
+    background-color: #f87070;
+    color: #151932;
+}
+
+.firstBorder {
+    height: 28em;
+    width: 28rem;
+    background: linear-gradient(135deg, #151932 10%, #282c51);
+    border-radius: 50%;
+    border-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2rem 2rem 4rem #151932, -2rem -2rem 4rem #282c51;
+}
+
+.secondBorder {
+    height: 21.1rem;
+    width: 21.1rem;
+    border-radius: 50%;
+    background-color: #151932;
+    outline: #151932 solid .9rem;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.time {
+    font-size: 6rem;
+    color: #d5defd;
+}
+
+.pause {
+    font-size: 1.6rem;
+    background-color: #151932;
+    border: none;
+    color: #d5defd;
+    letter-spacing: .5rem;
+    transition: text-shadow .2s;
+}
+
+.pause:hover {
+    cursor: pointer;
+    text-shadow: 0 0 .2rem white;
+}
+
+.settings {
+    background-color: #1e2140;
+    border: none;
+}
+
+.settings > img {
+    width: 2.5rem;
+    height: auto;
+    transition: rotate .2s;
+}
+
+.settings > img:hover {
+    cursor: pointer;
+    rotate: 15deg;
+}
+
+.progressRing {
+    position: absolute;
+    pointer-events: none;
+    width: 21.1rem;
+    height: 21.1rem;
+}
+
+.progressRingCircle {
+    transition: stroke-dashoffset .3s linear;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    cx: 10.55rem; 
+    cy: 10.55rem;
+    r: 10rem;
+    stroke: #f87070; 
+    stroke-width: 1rem;
+    fill: none;
+}
+
+@keyframes openSettingsScreenAnimation {
+    0%{transform: scale(0);}
+    100%{transform: scale(1);}
+}
+
+@keyframes closeSettingsScreenAnimation {
+    0%{transform: scale(1);}
+    100%{transform: scale(0);}
+}
+
+.settingsScreen {
+    position: absolute;
+    width: 50%;
+    height: 60%;
+    background-color: white;
+    border-radius: 1.8rem;
+    display: none;
+    animation: openSettingsScreenAnimation .2s ease-in;
+    z-index: 10;
+}
+
+.settingsContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.settingsTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .1rem solid #e3e3e3;
+    padding-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.settingsTitle > h1 {
+    color: #1c1a27;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+    margin-bottom: .5rem;
+}
+
+.closeButton {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: white;
+    border: none;
+    margin-right: 2rem;
+    margin-bottom: .5rem;
+}
+.closeButton:hover {
+    cursor: pointer;
+}
+
+.closeButton > img {
+    width: 1.5rem;
+    height: auto;
+}
+
+.settingsTime {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-bottom: .1rem solid #e3e3e3;
+}
+
+.settingsTime > h2 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: .5rem;
+}
+
+.timesContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.timesContainer h3 {
+    color: #9f9ea3;
+}
+
+.timesContainer input {
+    padding: 1rem;
+    background-color: #eef1fa;
+    border-style: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 11rem;
+    margin-bottom: 1rem;
+}
+
+.pomodoroTime, .shortBreakTime, .longBreakTime {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
+
+.fontsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .1rem solid #e3e3e3;
+}
+
+.fontsContainer h2 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: .5rem;
+    margin-bottom: 1rem;
+}
+
+.fontsCircles {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+.fontsCircles > * {
+    width: 3.7rem;
+    height: 3.7rem;
+    background-color: #eef1fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: none;
+}
+
+.fontsCircles > *:hover {
+    cursor: pointer;
+}
+
+.firstFont {
+    background-color: #151932;
+    color: white;
+    font-family: "Kumbh Sans";
+}
+
+.secondFont {
+    font-family: 'Roboto Slab';
+}
+
+.thirdFont {
+    font-family: 'Space Mono';
+}
+
+.colorContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.colorContainer h2 {
+    margin-left: 2rem;
+    font-size: 1.2rem;
+    letter-spacing: .5rem;
+    margin-bottom: 1rem;
+}
+
+.colorsCircles {
+    display: flex;
+    gap: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+.colorsCircles > * {
+    width: 3.7rem;
+    height: 3.7rem;
+    background-color: #eef1fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border: none;
+}
+
+.colorsCircles > *:hover {
+    cursor: pointer;
+}
+
+.firstColor {
+    background-color: #f87070;
+}
+
+.secondColor {
+    background-color: #6ff1fe;
+}
+
+.thirdColor {
+    background-color: #d981f9;
+}
+
+.applyButtonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.applyButton {
+    position: relative;
+    font-size: 1.5rem;
+    bottom: 1.7rem;
+    width: 11rem;
+    height: 4rem;
+    border-radius: 30px;
+    border-style: none;
+    background-color: #f87070;
+    color: white;
+    font-weight: bold;
+}
+
+.applyButton:hover {
+    cursor: pointer;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 25, 50, 0.6);
+    z-index: 9;
+}
+
+@media only screen and (max-width: 1527px) {
+    h1 {
+        font-size: 4rem;
+    }
+    .options {
+        padding: .4rem .4rem .4rem .4rem;
+        font-size: 2rem;
+        gap: .1rem;
+    }
+
+    .options > div {
+        padding: 1rem 2rem 1rem 2rem;
+        border-radius: 500px;
+    }
+
+    .settings > img {
+        width: 3rem;
+        height: auto;
+        transition: rotate .2s;
+    }
+
+    .settingsScreen {
+        height: 90%;
+    }
+
+    .settingsTitle h1 {
+        font-size: 4rem;
+    }
+
+    .closeButton > img {
+        width: 2rem;
+        height: auto;
+    }
+
+   .settingsTime {
+    flex-direction: column;
+    align-items: center;
+   }
+
+   .timesContainer {
+    flex-direction: column;
+   }
+
+   .pomodoroTime, .shortBreakTime, .longBreakTime {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    }
+
+    .fontsContainer {
+        flex-direction: column;
+    }
+
+    .fontsCircles {
+        margin-right: 0;
+    }
+
+    .colorContainer {
+        flex-direction: column;
+    }
+
+    .colorsCircles {
+        margin-right: 0;
+    }
+
+    .settingsContainer h2 {
+        margin-left: 0;
+    }
+    
+    .timesContainer input {
+        width: 6rem;
+    }
+
+    .settingsTime > h2 {
+        font-size: 2rem;
+        letter-spacing: .5rem;
+        text-align: center;
+    }
+
+    .pomodoroTime, .shortBreakTime, .longBreakTime {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .timesContainer input {
+        padding: 1rem;
+        background-color: #eef1fa;
+        border-style: none;
+        font-size: 1.4rem;
+        font-weight: bold;
+        width: 5.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .fontsContainer h2 {
+        font-size: 2rem;
+        letter-spacing: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    .colorContainer h2 {
+        font-size: 2rem;
+        letter-spacing: .5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .options {
+        padding: .4rem .4rem .4rem .4rem;
+        font-size: 1rem;
+        gap: .1rem;
+    }
+
+    .options > div {
+        padding: .5rem 1rem .5rem 1rem;
+        border-radius: 500px;
+    }
+    
+    .pomodoro {
+        background-color: #f87070;
+        color: #151932;
+    }
+
+    .firstBorder {
+        height: 14rem;
+        width: 14rem;
+        background: linear-gradient(135deg, #151932 10%, #282c51);
+        border-radius: 50%;
+        border-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 2rem 2rem 4rem #151932, -2rem -2rem 4rem #282c51;
+    }
+
+    .secondBorder {
+        height: 10.55rem;
+        width: 10.55rem;
+        border-radius: 50%;
+        background-color: #151932;
+        outline: #151932 solid .45rem;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+    }
+
+    .time {
+        font-size: 3rem;
+        color: #d5defd;
+    }
+
+    .pause {
+        font-size: .8rem;
+        background-color: #151932;
+        border: none;
+        color: #d5defd;
+        letter-spacing: .5rem;
+        transition: text-shadow .2s;
+    }
+
+    .settingsContainer {
+        gap: 0;
+    }
+    
+    .settings > img {
+        width: 2rem;
+        height: auto;
+        transition: rotate .2s;
+    }
+
+    .progressRing {
+        width: 10.55rem;
+        height: 10.55rem;
+    }
+
+    .progressRingCircle {
+        r: 5rem;
+        stroke-width: .5rem;
+        cx: 5.275rem;
+        cy: 5.275rem;
+    }
+
+    .settingsTitle > h1 {
+        color: #1c1a27;
+        font-size: 1.7rem;
+        margin-left: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    .closeButton {
+        width: .75rem;
+        height: .75rem;
+        background-color: white;
+        border: none;
+        margin-right: 1rem;
+        margin-bottom: .5rem;
+    }
+
+    .closeButton > img {
+        width: 1rem;
+        height: auto;
+    }
+
+    .settingsTime {
+        align-items: center;
+    }
+
+    .settingsTime > h2 {
+        font-size: 1rem;
+        letter-spacing: .5rem;
+        text-align: center;
+    }
+
+    .pomodoroTime, .shortBreakTime, .longBreakTime {
+        font-size: .65rem;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .timesContainer input {
+        padding: 1rem;
+        background-color: #eef1fa;
+        border-style: none;
+        font-size: .8rem;
+        font-weight: bold;
+        width: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .fontsContainer h2 {
+        font-size: 1rem;
+        letter-spacing: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    .fontsCircles > * {
+        width: 2rem;
+        height: 2rem;
+        background-color: #eef1fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        border: none;
+    }
+
+    .firstFont {
+        background-color: #151932;
+        color: white;
+        font-family: "Kumbh Sans";
+    }
+
+    .applyButton {
+        position: relative;
+        font-size: 1rem;
+        bottom: .90rem;
+        width: 6rem;
+        height: 2rem;
+        border-radius: 30px;
+        border-style: none;
+        background-color: #f87070;
+        color: white;
+        font-weight: bold;
+    }
+
+    .colorContainer h2 {
+        font-size: 1rem;
+        letter-spacing: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    .colorsCircles > * {
+        width: 1.85rem;
+        height: 1.85rem;
+        background-color: #eef1fa;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        border: none;
+    }
+
+    .firstColor {
+        background-color: #f87070;
+    }
+    
+    .secondColor {
+        background-color: #6ff1fe;
+    }
+    
+    .thirdColor {
+        background-color: #d981f9;
+    }
+}

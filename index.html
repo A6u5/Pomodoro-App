@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+</head>
+<body>
+    <h1>Pomodoro</h1>
+    <div class="options">
+        <div class="pomodoro">pomodoro</div>
+        <div class="shortBreak">short break</div>
+        <div class="longBreak">long break</div>
+    </div>
+    <div class="firstBorder">
+        <div class="secondBorder">
+            <svg class="progressRing" width="21.1rem" height="21.1rem">
+                <circle class="progressRingCircle" cx="10.55rem" cy="10.55rem" r="10rem" stroke="#f87070" stroke-width="1rem" fill="none">
+                </circle>
+            </svg>
+            <div class="time">25:00</div>
+            <button class="pause">START</button>
+        </div>
+    </div>
+    <button class="settings"><img src="assets/img/settings.png" alt=""></button>
+    <div class="settingsScreen">
+        <div class="settingsContainer">
+            <div class="settingsTitle">
+                <h1>Settings</h1>
+                <button class="closeButton"><img src="assets/img/cross.png" alt=""></button>
+            </div>
+            <div class="settingsTime">
+                <h2 class="timeTitle">TIME (MINUTES)</h2>
+                <div class="timesContainer">
+                    <div class="pomodoroTime">
+                        <h3>pomodoro</h3>
+                        <input id="pomodoroNumber" type="number" value="25" min="1" max="99" step=".01"/>
+                    </div>
+                    <div class="shortBreakTime">
+                        <h3>short break</h3>
+                        <input id="shortBreakNumber" type="number" value="5" min="1" max="99"/>
+                    </div>
+                    <div class="longBreakTime">
+                        <h3>long break</h3>
+                        <input id="longBreakNumber" type="number" value="15" min="1" max="99"/>
+                    </div>
+                </div>
+            </div>
+            <div class="fontsContainer">
+                <h2>FONT</h2>
+                <div class="fontsCircles">
+                    <button class="firstFont">Aa</button>
+                    <button class="secondFont">Aa</button>
+                    <button class="thirdFont">Aa</button>
+                </div>
+            </div>
+            <div class="colorContainer">
+                <h2>COLOR</h2>
+                <div class="colorsCircles">
+                    <button class="firstColor">✔</button>
+                    <button class="secondColor"></button>
+                    <button class="thirdColor"></button>
+                </div>
+            </div>
+        </div>
+        <div class="applyButtonContainer">
+            <button class="applyButton">Apply</button>
+        </div>
+    </div>
+    <div class="overlay"></div>
+    <script src="javascript/scripts.js"></script>
+</body>
+</html>
