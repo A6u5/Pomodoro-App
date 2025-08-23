@@ -1,5 +1,7 @@
 # ⏱️ Pomodoro App
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A simple and customizable Pomodoro Timer, built with HTML, CSS, and Vanilla JS.
 Perfect to stay focused while switching between work and break sessions.
 
