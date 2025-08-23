@@ -41,7 +41,7 @@ let counter = 1;
 let totalTime;
 let isRunning = false;
 
-const alarmSound = new Audio("../assets/audio/alarm.wav");
+const alarmSound = new Audio("./assets/audio/alarm.wav");
 
 const progressCircle = document.querySelector(".progressRingCircle");
 if (window.innerWidth <= 600) {
