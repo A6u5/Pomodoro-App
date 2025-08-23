@@ -33,3 +33,10 @@ Perfect to stay focused while switching between work and break sessions.
 ## 📜 License
 
 This project is licensed under the MIT License – feel free to use, modify, and share it.
+
+---
+
+## 🙋‍♂️ Author
+Developed by Agustín Torres
+
+[Linkedin](https://www.linkedin.com/in/agust%C3%ADn-torres-39813326a/?locale=en_US) · [Github](https://github.com/A6u5)
